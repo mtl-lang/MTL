@@ -4,11 +4,10 @@ import {
 } from "https://deno.land/std@0.159.0/testing/asserts.ts";
 
 import { Lexer } from "../main.js";
-const basic_tests = [
-  `
-  hello world
-`,
-];
+
+/*
+Basic tests to guarentee lexer is interpreting collections properly
+*/
 
 // grabs test file directory
 const __dirname = new URL(".", import.meta.url).pathname;
@@ -16,12 +15,18 @@ const __dirname = new URL(".", import.meta.url).pathname;
 const lexer = new Lexer();
 Deno.test("[BASIC] Token accuracy", async (test) => {
   await test.step("Collections", async (test) => {
+    // loads test file
     lexer.new_source(
-      Deno.readTextFileSync(__dirname + "samples/basic/variables.mtl"),
+      Deno.readTextFileSync(__dirname + "samples/basic/collections.mtl"),
     );
-    const lexical_data = lexer.analyze;
+    let lexical_data = lexer.analyze;
+    console.log(lexical_data)
+
     lexical_data.forEach((obj) => {
       delete obj["trace"]["column"];
+    });
+    lexical_data = lexical_data.filter((obj) => {
+      return (obj["token"] !== "eol" && obj["token"] !== "eof");
     });
 
     await test.step("String", () => {
@@ -193,6 +198,24 @@ Deno.test("[BASIC] Token accuracy", async (test) => {
           token: "rcb",
           value: "}",
           trace: { line: 4 },
+        },
+      ]);
+    });
+    await test.step("Collection", () => {
+      assertArrayIncludes(lexical_data.slice(34), [
+        { token: "keyw", value: "const", trace: { line: 5 } },
+        { token: "ident", value: "grouping", trace: { line: 5 } },
+        { token: "op", value: ":", trace: { line: 5 } },
+        { token: "type", value: "collection", trace: { line: 5 } },
+        { token: "lcb", value: "{", trace: { line: 5 } },
+        { token: "ref", value: "@boolean_test", trace: { line: 6 } },
+        { token: "op", value: ",", trace: { line: 6 } },
+        { token: "ref", value: "@float_test", trace: { line: 7 } },
+        { token: "rcb", value: "}", trace: { line: 8 } },
+        {
+          token: "ref",
+          value: ["@grouping", "boolean_test"],
+          trace: { line: 9 },
         },
       ]);
     });

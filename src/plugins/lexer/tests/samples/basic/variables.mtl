@@ -1,4 +1,0 @@
-const string_test: string { "hello world" }
-const boolean_test: boolean { true }
-const integer_test: number { 10 + -10 }
-const float_test: number { 3.141592 + -6.283185 }

@@ -9,7 +9,7 @@ class Lexer {
   constructor(source) {
     // removes newline spacing and implements custom token for loaded source
     if (source !== undefined) {
-      this.source = source.replace(/(\r\n|\n|\r)/gm, "&endln ");
+      this.source = source.replace(/(\r\n|\n|\r)/gm, "$");
     }
 
     this.lexer = {
@@ -38,7 +38,7 @@ class Lexer {
     };
     this.lexer.string.mode = false;
     this.lexer.string.bypass = false;
-    this.source = new_source.replace(/(\r\n|\n|\r)/gm, "&endln ");
+    this.source = new_source.replace(/(\r\n|\n|\r)/gm, "$");
   }
 
   // starts lexing .mtl file
@@ -51,6 +51,12 @@ class Lexer {
         this.interpret(this.source[i], this.lexer);
       }
     }
+
+    // store unstored tokens; used for handling last token of file
+    if (this.lexer.char_store.length !== 0) {
+      this.identify_token(this.lexer.char_store, this.lexer);
+    }
+
     return this.lexer.tokens;
   }
 
@@ -78,7 +84,9 @@ class Lexer {
         case "{":
         case "}":
         case "-":
-        case ":": {
+        case ",":
+        case ":":
+        case "$": {
           if (lexer.char_store.length !== 0) {
             this.identify_token(lexer.char_store, lexer);
           }
@@ -154,6 +162,7 @@ class Lexer {
       case "^":
       case "!":
       case "|":
+      case ",":
       case ":": {
         type = "op";
         break;
@@ -182,9 +191,10 @@ class Lexer {
         type = "rp";
         break;
       }
-      case "&endln": {
+      case "$": {
         lexer.position.line += 1;
-        return;
+        type = "eol";
+        break;
       }
 
       // if there was ni match above, check for unique cases
@@ -233,6 +243,7 @@ class Lexer {
             type = "number";
           }
         }
+        break;
       }
     }
 
