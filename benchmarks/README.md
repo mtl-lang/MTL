@@ -1,11 +1,14 @@
-NOTE: these tests are simply to show the performance advantages by utilizing individual character lexing.  
+NOTE: these tests are simply to show the performance advantages by utilizing
+individual character lexing.
 
-Benchmark demostration with new Lexer technique after three consecutive tests.  
-At peak, `Lexer v2` performed `3.49x` faster than the original Lexer.  
-Over 5 tests, the average performance of `Lexer v2` was `3.38x` faster.  
+Benchmark demostration with new Lexer technique after three consecutive tests.\
+At peak, `Lexer v2` performed `3.49x` faster than the original Lexer.\
+Over 5 tests, the average performance of `Lexer v2` was `3.38x` faster.
 
 Improvements that could be made:
+
 - removing the one regex could potentially push performance quite a bit higher.
+
 ```
 cpu: Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz
 runtime: deno 1.26.0 (x86_64-unknown-linux-gnu)

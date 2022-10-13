@@ -1,16 +1,17 @@
-/* 
-TODO: 
+/*
+TODO:
 - add column numbers
 - implement basic error handling
 */
 
 class Lexer {
-
   // takes in .mtl file as string
   constructor(source) {
-
     // removes newline spacing and implements custom token for loaded source
-    this.source = source.replace(/(\r\n|\n|\r)/gm, "&endln");
+    if (source !== undefined) {
+      this.source = source.replace(/(\r\n|\n|\r)/gm, "&endln ");
+    }
+
     this.lexer = {
       tokens: [],
       // built during character lexing
@@ -33,11 +34,11 @@ class Lexer {
     this.lexer.char_store = "";
     this.lexer.position = {
       line: 1,
-      column: 0
+      column: 0,
     };
     this.lexer.string.mode = false;
     this.lexer.string.bypass = false;
-    this.source = new_source.replace(/(\r\n|\n|\r)/gm, "&endln");
+    this.source = new_source.replace(/(\r\n|\n|\r)/gm, "&endln ");
   }
 
   // starts lexing .mtl file
@@ -69,13 +70,14 @@ class Lexer {
         this.identify_token(lexer.char_store, lexer);
         lexer.char_store = "";
       }
-    // if we didn't hit a space, but instead a special character, it must be seperated from character store
+      // if we didn't hit a space, but instead a special character, it must be seperated from character store
     } else {
       switch (char) {
         case "(":
         case ")":
         case "{":
         case "}":
+        case "-":
         case ":": {
           if (lexer.char_store.length !== 0) {
             this.identify_token(lexer.char_store, lexer);
@@ -94,7 +96,6 @@ class Lexer {
 
   // special functioning for interpreting and understanding strings
   process_string(char, lexer) {
-
     // checks if we've hit a end quote or we're able to pass a quotation (due to escaping with \)
     if (char !== '"' || lexer.string.bypass === true) {
       if (char === "\\") {
@@ -105,7 +106,7 @@ class Lexer {
       // if nothing special happened, keep reading string
       lexer.char_store += char;
 
-    // once end quotation is hit, tokenize string
+      // once end quotation is hit, tokenize string
     } else {
       lexer.tokens.push({
         token: "string",
@@ -131,6 +132,8 @@ class Lexer {
       case "else":
       case "while":
       case "loop":
+      case "true":
+      case "false":
       case "expose": {
         type = "keyw";
         break;
@@ -150,6 +153,7 @@ class Lexer {
       case "%":
       case "^":
       case "!":
+      case "|":
       case ":": {
         type = "op";
         break;
@@ -192,8 +196,7 @@ class Lexer {
             token_value = token_value.split(".");
           }
           type = "ref";
-        } 
-        // checks if token is a number, without using NaN which can be error prone
+        } // checks if token is a number, without using NaN which can be error prone
         else {
           number_check: {
             const max_decimal_points = 1;

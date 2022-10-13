@@ -42,7 +42,7 @@ loop {
 `;
 
 /*
-NOTE: in this test, lexer v1 has broken syntax 
+NOTE: in this test, lexer v1 has broken syntax
       due to Lydo error handling. It sees the v1
       source as valid.
 */
@@ -78,7 +78,7 @@ else {
 
 Deno.bench("Lexer v1", { group: "timing", baseline: true }, () => {
   lexer(test_tokens);
-  lexer(test_tokens_v1)
+  lexer(test_tokens_v1);
 });
 
 Deno.bench("Lexer v2", { group: "timing" }, () => {
