@@ -1,0 +1,8 @@
+{
+  "lint": {
+    "rules": {
+      // makes typing strict
+      "exclude": ["no-inferrable-types"]
+    }
+  }
+}

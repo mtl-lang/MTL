@@ -1,9 +1,4 @@
-const string_test: string { "hello world" }
-const boolean_test: boolean { true }
-const integer_test: number { 10 + -10 }
-const float_test: number { 3.141592 + -6.283185 }
-const grouping: collection {
-  @boolean_test,
-  @float_test
-}
-@grouping.boolean_test
+const phrase: string { "\" < this is escaped" } +
+const one: number { 1 }
+const pi: number { 3.1415 }
+mut mutable_string: string { "I can be changed" }
