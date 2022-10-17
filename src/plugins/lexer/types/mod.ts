@@ -1,14 +1,3 @@
-export type Memory = {
-  source: string;
-  tokens: Token[];
-  current_token: string | Array<string>;
-  position: {
-    line: number;
-    column: number;
-  };
-  mode: Mode;
-};
-
 export type Trace = {
   line: number;
   column: [number, number];
@@ -19,15 +8,19 @@ export const enum Mode {
   Compiler = 3,
 }
 
-export type IterationData = [number, string];
-
 export type Token = {
   type:
     | "keyw"
-    | "plus"
+    | "add"
     | "sub"
+    | "mult"
     | "div"
     | "mod"
+    | "power"
+    | "not"
+    | "pipe"
+    | "comma"
+    | "colon"
     | "type"
     | "op"
     | "eq"
@@ -44,13 +37,8 @@ export type Token = {
     | "number"
     | "string"
     | "nan"
-    | "eol";
+    | "eol"
+    | "eof";
   value: string | string[];
-  trace: {
-    line: number;
-    //       start    end
-    column: [number, number];
-  };
+  trace: Trace;
 };
-
-export type LexerToken = Token[];
