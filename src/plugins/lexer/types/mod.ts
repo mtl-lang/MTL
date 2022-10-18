@@ -37,6 +37,8 @@ export type Token = {
     | "number"
     | "string"
     | "nan"
+    | "unsafe"
+    | "ccall"
     | "eol"
     | "eof";
   value: string | string[];
