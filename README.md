@@ -6,14 +6,14 @@ licensed under MIT
 
 ```
 .
-├─ .vscode/
-   ├─ settings.json (editor configuration)
-├─ benchmarks/ [making sure MTL is blazingly fast]
+├─ .vscode/ [editor configuration]
 ├─ src/
-   ├─ lexer/ [new MTL lexer]
-   ├─ parser/
-   ├─ targets/
-      ├─ js/
-      ├─ rust/
-├─ LICENSE
+   ├─ plugins/ [built-in compiler for MTL]
+      ├─ lexer/
+      ├─ parser/
+      ├─ targets/
+         ├─ js/
+         ├─ rust/
+├─ deno.jsonc [configures strict types]
+├─ LICENSE [MIT]
 ```

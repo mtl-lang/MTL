@@ -1,0 +1,447 @@
+{
+  "collections": {
+    "expected": [
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 1, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "phrase",
+        "trace": { "line": 1, "column": [6, 11] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 1, "column": [12, 12] }
+      },
+      {
+        "type": "type",
+        "value": "string",
+        "trace": { "line": 1, "column": [14, 19] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 1, "column": [21, 21] }
+      },
+      {
+        "type": "string",
+        "value": "\" < this is escaped",
+        "trace": { "line": 1, "column": [23, 44] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 1, "column": [46, 46] }
+      },
+      {
+        "type": "eol",
+        "value": "*",
+        "trace": { "line": 1, "column": [-1, -1] }
+      },
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 2, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "one",
+        "trace": { "line": 2, "column": [6, 8] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 2, "column": [9, 9] }
+      },
+      {
+        "type": "type",
+        "value": "number",
+        "trace": { "line": 2, "column": [11, 16] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 2, "column": [18, 18] }
+      },
+      {
+        "type": "number",
+        "value": "1",
+        "trace": { "line": 2, "column": [20, 20] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 2, "column": [22, 22] }
+      },
+      {
+        "type": "eol",
+        "value": "*",
+        "trace": { "line": 2, "column": [-1, -1] }
+      },
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 3, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "pi",
+        "trace": { "line": 3, "column": [6, 7] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 3, "column": [8, 8] }
+      },
+      {
+        "type": "type",
+        "value": "number",
+        "trace": { "line": 3, "column": [10, 15] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 3, "column": [17, 17] }
+      },
+      {
+        "type": "number",
+        "value": "3.1415",
+        "trace": { "line": 3, "column": [19, 24] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 3, "column": [26, 26] }
+      },
+      {
+        "type": "eol",
+        "value": "*",
+        "trace": { "line": 3, "column": [-1, -1] }
+      },
+      {
+        "type": "keyw",
+        "value": "mut",
+        "trace": { "line": 4, "column": [0, 2] }
+      },
+      {
+        "type": "ident",
+        "value": "mutable_string",
+        "trace": { "line": 4, "column": [4, 17] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 4, "column": [18, 18] }
+      },
+      {
+        "type": "type",
+        "value": "string",
+        "trace": { "line": 4, "column": [20, 25] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 4, "column": [27, 27] }
+      },
+      {
+        "type": "string",
+        "value": "I can be changed",
+        "trace": { "line": 4, "column": [29, 46] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 4, "column": [48, 48] }
+      },
+      {
+        "type": "eof",
+        "value": "*",
+        "trace": { "line": 4, "column": [-1, -1] }
+      }
+    ]
+  },
+  "symbols": {
+    "expected": [
+      { "type": "add", "value": "+", "trace": { "line": 1, "column": [0, 0] } },
+      { "type": "sub", "value": "-", "trace": { "line": 1, "column": [1, 1] } },
+      {
+        "type": "mult",
+        "value": "*",
+        "trace": { "line": 1, "column": [2, 2] }
+      },
+      { "type": "div", "value": "/", "trace": { "line": 1, "column": [3, 3] } },
+      { "type": "mod", "value": "%", "trace": { "line": 1, "column": [4, 4] } },
+      {
+        "type": "power",
+        "value": "^",
+        "trace": { "line": 1, "column": [5, 5] }
+      },
+      { "type": "not", "value": "!", "trace": { "line": 1, "column": [6, 6] } },
+      {
+        "type": "pipe",
+        "value": "|",
+        "trace": { "line": 1, "column": [7, 7] }
+      },
+      {
+        "type": "comma",
+        "value": ",",
+        "trace": { "line": 1, "column": [8, 8] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 1, "column": [9, 9] }
+      },
+      {
+        "type": "eq",
+        "value": "=",
+        "trace": { "line": 1, "column": [10, 10] }
+      },
+      {
+        "type": "gt",
+        "value": ">",
+        "trace": { "line": 1, "column": [11, 11] }
+      },
+      {
+        "type": "lt",
+        "value": "<",
+        "trace": { "line": 1, "column": [12, 12] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 1, "column": [13, 13] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 1, "column": [14, 14] }
+      },
+      {
+        "type": "lp",
+        "value": "(",
+        "trace": { "line": 1, "column": [15, 15] }
+      },
+      {
+        "type": "rp",
+        "value": ")",
+        "trace": { "line": 1, "column": [16, 16] }
+      },
+      {
+        "type": "eof",
+        "value": "*",
+        "trace": { "line": 1, "column": [-1, -1] }
+      }
+    ]
+  },
+  "keywords": {
+    "expected": [
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 1, "column": [0, 4] }
+      },
+      {
+        "type": "keyw",
+        "value": "mut",
+        "trace": { "line": 1, "column": [6, 8] }
+      },
+      {
+        "type": "keyw",
+        "value": "if",
+        "trace": { "line": 1, "column": [10, 11] }
+      },
+      {
+        "type": "keyw",
+        "value": "else",
+        "trace": { "line": 1, "column": [13, 16] }
+      },
+      {
+        "type": "keyw",
+        "value": "while",
+        "trace": { "line": 1, "column": [18, 22] }
+      },
+      {
+        "type": "keyw",
+        "value": "loop",
+        "trace": { "line": 1, "column": [24, 27] }
+      },
+      {
+        "type": "keyw",
+        "value": "true",
+        "trace": { "line": 1, "column": [29, 32] }
+      },
+      {
+        "type": "keyw",
+        "value": "false",
+        "trace": { "line": 1, "column": [34, 38] }
+      },
+      {
+        "type": "keyw",
+        "value": "expose",
+        "trace": { "line": 1, "column": [40, 45] }
+      },
+      {
+        "type": "eof",
+        "value": "*",
+        "trace": { "line": 1, "column": [-1, -1] }
+      }
+    ]
+  },
+  "types": {
+    "expected": [
+      {
+        "type": "type",
+        "value": "string",
+        "trace": { "line": 1, "column": [0, 5] }
+      },
+      {
+        "type": "type",
+        "value": "number",
+        "trace": { "line": 1, "column": [7, 12] }
+      },
+      {
+        "type": "type",
+        "value": "boolean",
+        "trace": { "line": 1, "column": [14, 20] }
+      },
+      {
+        "type": "type",
+        "value": "collection",
+        "trace": { "line": 1, "column": [22, 31] }
+      },
+      {
+        "type": "type",
+        "value": "unsafe",
+        "trace": { "line": 1, "column": [33, 38] }
+      },
+      {
+        "type": "eof",
+        "value": "*",
+        "trace": { "line": 1, "column": [-1, -1] }
+      }
+    ]
+  },
+  "invalid_string": {
+    "expected": [
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 1, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "my_lucky_number",
+        "trace": { "line": 1, "column": [6, 20] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 1, "column": [21, 21] }
+      },
+      {
+        "type": "type",
+        "value": "number",
+        "trace": { "line": 1, "column": [23, 28] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 1, "column": [30, 30] }
+      },
+      {
+        "type": "number",
+        "value": "7",
+        "trace": { "line": 1, "column": [32, 32] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 1, "column": [34, 34] }
+      },
+      {
+        "type": "eol",
+        "value": "*",
+        "trace": { "line": 1, "column": [-1, -1] }
+      },
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 2, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "my_lucky_phrase",
+        "trace": { "line": 2, "column": [6, 20] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 2, "column": [21, 21] }
+      },
+      {
+        "type": "type",
+        "value": "string",
+        "trace": { "line": 2, "column": [23, 28] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 2, "column": [30, 30] }
+      },
+      {
+        "type": "invalid_string",
+        "value": "Oh no! An unclosed string... }",
+        "trace": { "line": 2, "column": [32, 62] }
+      },
+      {
+        "type": "eol",
+        "value": "*",
+        "trace": { "line": 2, "column": [-1, -1] }
+      },
+      {
+        "type": "keyw",
+        "value": "const",
+        "trace": { "line": 3, "column": [0, 4] }
+      },
+      {
+        "type": "ident",
+        "value": "my_lucky_phrase_2",
+        "trace": { "line": 3, "column": [6, 22] }
+      },
+      {
+        "type": "colon",
+        "value": ":",
+        "trace": { "line": 3, "column": [23, 23] }
+      },
+      {
+        "type": "type",
+        "value": "string",
+        "trace": { "line": 3, "column": [25, 30] }
+      },
+      {
+        "type": "lcb",
+        "value": "{",
+        "trace": { "line": 3, "column": [32, 32] }
+      },
+      {
+        "type": "string",
+        "value": "No fear, the day has been saved!",
+        "trace": { "line": 3, "column": [34, 67] }
+      },
+      {
+        "type": "rcb",
+        "value": "}",
+        "trace": { "line": 3, "column": [69, 69] }
+      },
+      {
+        "type": "eof",
+        "value": "*",
+        "trace": { "line": 3, "column": [-1, -1] }
+      }
+    ]
+  }
+}
