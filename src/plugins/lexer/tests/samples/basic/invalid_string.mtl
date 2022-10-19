@@ -1,0 +1,3 @@
+const my_lucky_number: number { 7 }
+const my_lucky_phrase: string { "Oh no! An unclosed string... }
+const my_lucky_phrase_2: string { "No fear, the day has been saved!" }

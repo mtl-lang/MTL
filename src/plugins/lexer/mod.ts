@@ -34,6 +34,7 @@ export class Lexer {
   // loads new .mtl source, avoiding reinitializing class
   load(input: string) {
     this.source = input.replace(/(\r\n|\n|\r)/gm, "&eol") + "&eof ";
+    return this;
   }
 
   // starts generation of lexical tokens
@@ -41,6 +42,11 @@ export class Lexer {
     this.position = -1;
     this.virtual_position = -1;
     this.token = "";
+    this.trace = {
+      line: 1,
+      column: [0, 0],
+    };
+    this.tokens = [];
     this.mode = Mode.Token;
 
     // basic character loop
@@ -106,6 +112,18 @@ export class Lexer {
           // if no conditions met, keep building string
         } else {
           this.token += character;
+
+          /*
+          if string wasnt closed correctly, auto close and store
+          string with absorbed tokens from line for the parser to
+          use in error output; continue lexing to discover possible
+          errors ahead
+          */
+          if (this.peek() === "&") {
+            this.mode = Mode.Token;
+            this.trace.column[1] = this.virtual_position;
+            this.createToken("invalid_string", this.token);
+          }
         }
         break;
       }
@@ -233,20 +251,16 @@ export class Lexer {
         type = "colon";
         break;
       }
-      case "==": {
+      case "=": {
         type = "eq";
         break;
       }
-      case "!=": {
-        type = "neq";
+      case ">": {
+        type = "gt";
         break;
       }
-      case ">=": {
-        type = "geq";
-        break;
-      }
-      case "<=": {
-        type = "leq";
+      case "<": {
+        type = "lt";
         break;
       }
       case "{": {
@@ -269,7 +283,11 @@ export class Lexer {
         return;
       }
       default: {
-        type = "ident";
+        if (isNumber(token)) {
+          type = "number";
+        } else {
+          type = "ident";
+        }
         break;
       }
     }
@@ -335,4 +353,38 @@ function checkForString(
     }
   }
   return false;
+}
+
+// elementary check for numbers / decimals
+function isNumber(token: string | Array<string>): boolean {
+  const max_decimal_points = 1;
+  let decimal_points_found = 0;
+  for (let i = 0; token.length > i; i++) {
+    switch (token[i]) {
+      case ".": {
+        decimal_points_found += 1;
+        if (decimal_points_found > max_decimal_points) {
+          return false;
+        }
+        break;
+      }
+      case "0":
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9": {
+        continue;
+      }
+      // if matching number fails, assume it's a variable identifier. (if error, will be caught by parser)
+      default: {
+        return false;
+      }
+    }
+  }
+  return true;
 }
