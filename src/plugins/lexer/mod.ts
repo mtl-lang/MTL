@@ -27,13 +27,13 @@ export class Lexer {
   // optional initiator for .mtl source
   constructor(input?: string) {
     if (input !== undefined) {
-      this.source = input.replace(/(\r\n|\n|\r)/gm, "&eol") + "&eof ";
+      this.source = input.replace(/(\r\n|\n|\r)/gm, "&eol") + "&eof";
     }
   }
 
   // loads new .mtl source, avoiding reinitializing class
   load(input: string) {
-    this.source = input.replace(/(\r\n|\n|\r)/gm, "&eol") + "&eof ";
+    this.source = input.replace(/(\r\n|\n|\r)/gm, "&eol") + "&eof";
     return this;
   }
 
